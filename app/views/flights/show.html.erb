@@ -1,0 +1,29 @@
+<h1>Showing Flights</h1>
+
+<p>
+  <strong>Flight Number:</strong>
+  <%= @flight.number%>
+</p>
+
+<p>
+  <strong>Departure:</strong>
+  <%= @flight.departure.date %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @flight.departure.status %>
+</p>
+
+<p>
+  <strong>Arrival:</strong>
+  <%= @flight.arrival.date %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @flight.arrival.status %>
+</p>
+ 
+<%= link_to 'Edit Flight', edit_flight_path(@flight) %> |
+<%= link_to 'Back to Flight', flights_path %>

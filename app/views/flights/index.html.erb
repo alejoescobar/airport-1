@@ -1,0 +1,20 @@
+<h1>Listing Flights</h1>
+<p>
+  <%= link_to 'New flight', new_flight_path %>
+</p>
+<div class="panel panel-default">
+    <% @flights.each do |flight| %>
+    <div class="panel-heading">
+        <h4>Flight Number <%= flight.number%> 
+          <span>
+            <%= link_to edit_flight_path(flight) do %>
+              <i class="glyphicon glyphicon-edit"></i>
+            <% end %>
+            <%= link_to flight_path(flight) , method: :delete, data: { confirm: 'Are you sure?' } do %>
+              <i class="glyphicon glyphicon-trash"></i>
+            <% end %>
+          </span>
+        </h4> 
+    </div>
+    <% end %>
+</div>

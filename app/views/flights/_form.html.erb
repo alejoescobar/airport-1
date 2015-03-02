@@ -1,0 +1,58 @@
+<%= form_for @flight do |f| %>
+ 
+  <% if @flight.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@flight.errors.count, "error") %> prohibited
+        this flight from being saved:
+      </h2>
+      <ul>
+        <% @flight.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <%= f.collection_select(:airline_id, Airline.all, :id, :name) %>
+  <p>
+    <%= f.label :number %><br>
+    <%= f.number_field :number %>
+  </p>
+
+    <h2>Departure</h2>
+
+    <%= f.fields_for :departure do |builder| %>
+
+      <p>
+        <%= builder.label :status %> <br>
+        <%= builder.select :status, options_for_select(Departure.statuses.keys) %>
+      </p>
+
+      <p>
+        <%= builder.label :date %> <br>
+        <%= builder.datetime_select :date %>
+      </p>
+    <% end %>
+
+    <h2>Arrival</h2>
+
+    <%= f.fields_for :arrival do |builder| %>
+
+      <p>
+        <%= builder.label :status %> <br>
+        <%= builder.select :status, options_for_select(Departure.statuses.keys) %>
+      </p>
+
+      <p>
+        <%= builder.label :date %> <br>
+        <%= builder.datetime_select :date %>
+      </p>
+    
+    <% end %>
+
+  <p>
+    <%= f.submit %>
+  </p>
+ 
+<% end %>

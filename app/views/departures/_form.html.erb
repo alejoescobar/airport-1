@@ -1,0 +1,9 @@
+<%= form_for([@flight, @flight.build_departure]) do |f| %>
+  <p>
+    <%= f.label :date %> <br>
+    <%= f.datetime_select(:date, null: false, default: Time.now) %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
